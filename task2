@@ -4,9 +4,16 @@
     yum: name=git state=latest
     become: yes
     become_method: sudo
-  - name: clone myrepo
-    git: repo=https://github.com/alanhow/myrepo.git dest=~/myrepo
-  - name: clone petclinic 
-    git: repo=https://github.com/alanhow/spring-petclinic.git dest=~/petclinic 
-
+#  - name: clone myrepo
+#    git: repo=https://github.com/alanhow/myrepo.git dest=~/myrepo
+#  - name: clone petclinic 
+#    git: repo=https://github.com/alanhow/spring-petclinic.git dest=~/petclinic 
+#  - name: create Maven directory
+#    file: path=~/maven state=directory mode=0755
+#  - name: install Maven
+#    unarchive: src="http://apache.mivzakim.net/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz" dest=~/maven copy=no creates=~/maven/apache-maven-3.3.9/README.txt
+  - name: mkdir ~/maven
+    file: path=~/maven state=directory mode=0755
+  - name: install maven
+    unarchive: src="http://apache.spd.co.il/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz" dest="/home/ec2-user/maven" copy=no creates=~/maven/apache-maven-3.3.9/README.txt
 
