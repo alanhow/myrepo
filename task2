@@ -1,0 +1,12 @@
+- hosts: localhost
+  tasks:
+  - name: clone petclinic 
+    yum: name=git state=latest
+    become: yes
+    become_method: sudo
+  - name: clone myrepo
+    git: repo=https://github.com/alanhow/myrepo.git dest=~/myrepo
+  - name: clone petclinic 
+    git: repo=https://github.com/alanhow/spring-petclinic.git dest=~/petclinic 
+
+
